@@ -1,0 +1,17 @@
+{% extends "devices/headers.html" %}
+
+{% block content %}
+  <h1>Registered Devices</h1>
+  {% if object_list %}
+    <ul>
+      {% for device in object_list %}
+        <li>
+          <a href="/devices/{{ device.id }}">{{ device.name }}</a>
+          <a href="/devices/{{ device.id }}/delete">delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no registered devices.</p>
+  {% endif %}
+{% endblock %}

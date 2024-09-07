@@ -1,0 +1,12 @@
+{% extends "devices/headers.html" %}
+
+{% block content %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        {{ object.subscribers }}
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}

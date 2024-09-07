@@ -1,0 +1,18 @@
+{% extends "addresses/headers.html" %}
+
+{% block content %}
+  <h1>Address Book</h1>
+  {% if object_list %}
+    <ul>
+      {% for address in object_list %}
+        <li>
+          <a href="/addresses/{{ address.id }}">{{ address.name }}</a>
+          ({{ address.email }})
+          <a href="/addresses/{{ address.id }}/delete">delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There's no one in the address book.</p>
+  {% endif %}
+{% endblock %}
