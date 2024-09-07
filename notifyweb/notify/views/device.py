@@ -6,11 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from devices.models import Device
-
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the devices index.")
+from notify.models import Device
 
 
 class DeviceListView(ListView):
@@ -20,16 +16,16 @@ class DeviceListView(ListView):
 class DeviceCreateView(CreateView):
     model = Device
     fields = ["name", "subscribers"]
-    success_url = reverse_lazy('devices:list')
+    success_url = reverse_lazy('notify:device-list')
 
 
 class DeviceUpdateView(UpdateView):
     model = Device
     fields = ["name", "subscribers"]
-    success_url = reverse_lazy('devices:list')
+    success_url = reverse_lazy('notify:device-list')
 
 
 class DeviceDeleteView(DeleteView):
     model = Device
     fields = ["name"]
-    success_url = reverse_lazy('devices:list')
+    success_url = reverse_lazy('notify:device-list')

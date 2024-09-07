@@ -1,4 +1,4 @@
-{% extends "devices/headers.html" %}
+{% extends "notify/headers.html" %}
 
 {% block content %}
   <h1>Registered Devices</h1>
@@ -6,12 +6,13 @@
     <ul>
       {% for device in object_list %}
         <li>
-          <a href="/devices/{{ device.id }}">{{ device.name }}</a>
-          <a href="/devices/{{ device.id }}/delete">delete</a>
+          <a href="/device/{{ device.id }}">{{ device.name }}</a>
+          <a href="/device/{{ device.id }}/delete">delete</a>
         </li>
       {% endfor %}
     </ul>
   {% else %}
     <p>There are no registered devices.</p>
   {% endif %}
+  <a href="/device/add">add</a>
 {% endblock %}
