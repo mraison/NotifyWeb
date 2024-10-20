@@ -1,0 +1,19 @@
+{% extends "notify/headers.html" %}
+
+{% block content %}
+  <h1>Backend Configure</h1>
+  {% if config %}
+    <ul>
+      {{ config }}
+    </ul>
+  {% else %}
+    <p>No config.</p>
+  {% endif %}
+  <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <label for="node_count">Node Count</label>
+      <input id="node_count" name="node_count" type="number" min="1">
+      <input type="submit">
+  </form>
+{% endblock %}

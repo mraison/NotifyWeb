@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from .views.base import index
+from .views.base import SystemConfig
 from .views.address import AddressListView, AddressCreateView, AddressUpdateView, AddressDeleteView
 from .views.device import DeviceListView, DeviceCreateView, DeviceUpdateView, DeviceDeleteView
 
@@ -13,7 +13,7 @@ router.register(r'device', DeviceViewSet)
 app_name = 'notify'
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", SystemConfig, name="index"),
     path('data/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
 
