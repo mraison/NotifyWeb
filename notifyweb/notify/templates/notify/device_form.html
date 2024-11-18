@@ -4,6 +4,7 @@
 <div>
     <form action="" method="post">
         {% csrf_token %}
+        <span>Device ID: {{ object.id }}</span>
         {{ form }}
         {{ object.subscribers }}
         <input type="submit">

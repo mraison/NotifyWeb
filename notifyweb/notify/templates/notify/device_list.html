@@ -6,6 +6,7 @@
     <ul>
       {% for device in object_list %}
         <li>
+          <span>Device ID: {{ device.id }}</span>
           <a href="/device/{{ device.id }}">{{ device.name }}</a>
           <a href="/device/{{ device.id }}/delete">delete</a>
         </li>
