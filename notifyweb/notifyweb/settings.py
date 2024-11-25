@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,16 @@ SECRET_KEY = 'django-insecure-wep@oihco+qnn#l!5!8-!2%4#_r)ye44pn!k984#umz8=zgynq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+loc_net = os.environ.get('LOC_NETWORK', None)
+if loc_net:
+    ALLOWED_CIDR_NETS = [
+        loc_net
+    ]
+
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    loc_net
+]
 
 
 # Application definition
@@ -42,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'allow_cidr.middleware.AllowCIDRMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
